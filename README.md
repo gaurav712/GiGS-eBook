@@ -1,5 +1,5 @@
 # GiGS-eBook
-a python library to search free eBooks online using the Library Genesis API
+a python library to search free eBooks online using [Library Genesis](https://en.wikipedia.org/wiki/Library_Genesis)'s database
 
 # Dependencies
 * bs4:
@@ -7,6 +7,7 @@ a python library to search free eBooks online using the Library Genesis API
     `pip3 install bs4`
 
 # TODO
+* Make it functional
 * Documentation
 * Remove unnecessary code snippets used for testing
 
