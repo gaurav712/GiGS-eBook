@@ -1,19 +1,16 @@
-# GiGS_eBook
+# GiGS-eBook
 a python library to search free eBooks online using [Library Genesis](https://en.wikipedia.org/wiki/Library_Genesis)'s database
 
 # Installation
-`pip3 install GiGS_eBook`
-
-*It doesn't work yet because It's still to be submitted to PyPI*
+`pip3 install gigsebook`
 
 # TODO
 * Better error handling
-* Submit to `PyPI`
 
 # USAGE
 * import the class FetchData
 
-    `from GiGS_eBook import FetchData`
+    `from gigsebook import FetchData`
 * initialize an instance of `FetchData` with the query
 
     `output = FetchData('your_query')`
