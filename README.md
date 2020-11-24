@@ -1,15 +1,64 @@
-# GiGS-eBook
+# GiGS_eBook
 a python library to search free eBooks online using [Library Genesis](https://en.wikipedia.org/wiki/Library_Genesis)'s database
 
-# Dependencies
-* bs4:
+# Installation
+`pip3 install GiGS_eBook`
 
-    `pip3 install bs4`
+*It doesn't work yet because It's still to be submitted to PyPI*
 
 # TODO
-* Make it functional
-* Documentation
-* Remove unnecessary code snippets used for testing
+* Better error handling
+* Submit to `PyPI`
+
+# USAGE
+* import the class FetchData
+
+    `from GiGS_eBook import FetchData`
+* initialize an instance of `FetchData` with the query
+
+    `output = FetchData('your_query')`
+* now `output.data` should be filled with the returned info, use it to your needs. e.g.
+
+    `print(output.data)`
+
+    should provide you with:
+
+    ```
+    [
+        {
+            'title': 'dummy',
+            'author': 'dummy, dummy2',
+            'year': '0000',
+            'publication': 'dummy',
+            'pages': '0',
+            'language': 'dummy',
+            'size': '0 Bytes',
+            'extention': 'none',
+            'links': ['https://example.example',
+                      'https://example2.example']
+        },
+
+        {
+            'title': 'dummy',
+            'author': 'dummy, dummy2',
+            'year': '0000',
+            'publication': 'dummy',
+            'pages': '0',
+            'language': 'dummy',
+            'size': '0 Bytes',
+            'extention': 'none',
+            'links': ['https://example.example',
+                      'https://example2.example']
+        },
+
+        .
+        .
+        .
+    ]
+    ```
+
+    *Note that the output above is not JSON, It's just a list of dictionaries. The representation is just to make it readable.*
+
 
 # NOTES
 **I DO NOT RECOMMEND PIRACY OF ANY CREATION, BUY THE ORIGINAL COPIES TO SUPPORT THE AUTHOR. THIS CODE IS FOR EDUCATIONAL PURPOSES. FOR OTHER USES, YOU ARE RESPONSIBLE FOR WHAT YOU DO.**

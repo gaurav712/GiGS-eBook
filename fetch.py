@@ -14,14 +14,28 @@ PUBLISHED_YEAR_INDEX = 4
 PAGES_INDEX = 5
 LANGUAGE_INDEX = 6
 SIZE_INDEX = 7
-FILE_TYPE_INDEX = 8
-DOWNLOAD_LINK_INDEX = 9 # and onwards
+EXTENTION_INDEX = 8
+DOWNLOAD_LINKS_INDEX = 9 # and onwards
 
 class FetchData:
 
-    title = []
+    # To store the final result
+    data = []
 
     def __init__(self, query, column = 'title'):
+
+        # To store each entry
+        self.entry = {
+            'title': '',
+            'author': '',
+            'year': '',
+            'publication': '',
+            'pages': '',
+            'language': '',
+            'size': '',
+            'extention': '',
+            'links': []
+        }
 
         # Get the data
         self.http = PoolManager()
@@ -41,7 +55,20 @@ class FetchData:
             # Split all the data fields
             row = row.find_all('td')
             # print(self.get_rest(str(row[PUBLICATION_INDEX])))
-            self.title.append(self.get_title(str(row[TITLE_INDEX])))
+            # self.title.append(self.get_title(str(row[TITLE_INDEX])))
+            self.entry.update({'title': self.get_title(str(row[TITLE_INDEX])),
+                               'author': self.get_author(str(row[AUTHOR_INDEX])),
+                               'publication': self.get_rest(str(row[PUBLICATION_INDEX])),
+                               'year': self.get_rest(str(row[PUBLISHED_YEAR_INDEX])),
+                               'pages': self.get_rest(str(row[PAGES_INDEX])),
+                               'language': self.get_rest(str(row[LANGUAGE_INDEX])),
+                               'size': self.get_rest(str(row[SIZE_INDEX])),
+                               'extention': self.get_rest(str(row[EXTENTION_INDEX])),
+                               'links': self.get_links(row[DOWNLOAD_LINKS_INDEX:])})
+            self.data.append(self.entry)
+            self.entry = self.entry.copy()
+        
+        del self.entry  # to free a little memory
 
     # Methods to extract METADATA
     # this is obviously not the efficient way,
@@ -73,7 +100,3 @@ class FetchData:
     # This method can parse Publication, Language, Size etc. all with single implementation
     def get_rest(self, td_text):
         return (td_text.split('</td>')[0].split('>')[1])
-
-# print(contents_table)
-data = FetchData('code')
-print(data.title)
